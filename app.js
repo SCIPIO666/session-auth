@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+const isAuthenticated=require('./middleware/authMiddleware')
 
 
 app.use(morgan('dev')); // Standard HTTP logging

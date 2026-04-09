@@ -1,28 +1,29 @@
 const authService=require('../services/authService')
+const isAuthenticated=require('../middleware/authMiddleware')
 const logger=require('../utils/logger')
-const signUpUser = async (req, res, next) => {
+// const signUpUser = async (req, res, next) => {
+// const logInUser = (req, res) => {
+// const logOutUser = (req, res, next) => {
+
+
+async function  signUpUser(req, res, next) {
   try {
-    const user = await authService.signUpUser(req.body.username, req.body.password);
-    logger.info('user being created')
-    res.status(201).json({ message: "User created", user });
-  } catch (err) {
-    next(err);
+    const {username,password}=req.body
+    const user=await authService.signUpUser(username,password)
+  } catch (error) {
+    
   }
-};
 
-const logInUser = (req, res) => {
-  // If this code runs, passport.authenticate was successful
-  logger.info('passport.authenticate was successful')
-  res.json({ message: "Logged in successfully", user: req.user });
-};
+}
+async function  logInUser (req, res) {
 
-const logOutUser = (req, res, next) => {
-  req.logout((err) => {
-    if (err) return next(err);
-    logger.info('logged out succesfully')
-    res.json({ message: "Logged out" });
-  });
-};
+  
+}
+async function  logOutUser  (req, res,next) {
+
+  
+}
+
 async function getSignUpForm(req,res){
 try {
   logger.info('getting sign up form')
