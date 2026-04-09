@@ -10,8 +10,10 @@ async function  signUpUser(req, res, next) {
   try {
     const {username,password}=req.body
     const user=await authService.signUpUser(username,password)
+    logger.info('saving new user')
+    res.status(201).json({ message: "User created", user });
   } catch (error) {
-    
+    next(err);
   }
 
 }
