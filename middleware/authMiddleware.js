@@ -5,7 +5,18 @@ const isAuthenticated = (req, res, next) => {
   res.status(401).json({ message: "Please log in first" });
 };
 
-module.exports = { isAuthenticated };
+//Role check (Do they have the right permission?)
+const authorize = (role) => {
+  return (req, res, next) => {
+    // We check the role we stored in the DB (attached to req.user by passport)
+    if (req.user && req.user.role === role) {
+      return next();
+    }
+    res.status(403).json({ message: "Forbidden: You do not have access to this resource" });
+  };
+};
+
+module.exports = { isAuthenticated, authorize };
 
 
 //will be used for protecting routes

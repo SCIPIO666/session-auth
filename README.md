@@ -150,6 +150,19 @@ const isAuthenticated = (req, res, next) => {
 
 ---
 
+
+🛡️ Role-Based Access Control (RBAC)
+isAuthenticated: The entry gate. Ensures a session cookie is valid.
+
+authorize('role_name'): The VIP list. Ensures the user's role in the DB matches the required access level.
+
+Status Codes:
+
+401 Unauthorized: I don't know who you are (Go to Login).
+
+403 Forbidden: I know who you are, but you aren't allowed in here.
+
+
 ### The "Cracked" Mental Model:
 1.  **Signup:** Manual (Service -> Model -> DB).
 2.  **Login:** Automatic (Passport Strategy -> `serializeUser` -> Session Cookie).
