@@ -17,13 +17,15 @@ async function  signUpUser(req, res, next) {
   }
 
 }
-async function  logInUser (req, res) {
 
+async function  logInUser (req, res) {
+logger.info('nothing happennin here,au7thenticate middleware from passport runs beforew this ')
+  res.send('logged in')
   
 }
 async function  logOutUser  (req, res,next) {
-
-  
+logger.info('nothing happennin here,au7thenticate middleware from passport runs beforew this ')
+   res.send('logged out')
 }
 
 async function getSignUpForm(req,res){
