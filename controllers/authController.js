@@ -19,13 +19,18 @@ async function  signUpUser(req, res, next) {
 }
 
 async function  logInUser (req, res) {
-logger.info('nothing happennin here,au7thenticate middleware from passport runs beforew this ')
+logger.info('nothing happenning here,authenticate middleware from passport runs before this,if you are seeng this login succesful ')
   res.send('logged in')
   
 }
 async function  logOutUser  (req, res,next) {
-logger.info('nothing happennin here,au7thenticate middleware from passport runs beforew this ')
-   res.send('logged out')
+
+   req.logout((err) => {
+      if (err) return next(err);
+      logger.info('session destoyed from server,cookie removed from browser ')
+      logger.info('logged out succesfully')
+      res.json({ message: "Logged out" });
+    });
 }
 
 async function getSignUpForm(req,res){
