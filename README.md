@@ -1,8 +1,4 @@
-This is a smart move. When you're in the "high-intensity" phase of learning, documenting the "why" and the "where" is the only way to make sure the knowledge sticks.
 
-Here is a comprehensive `README.md` structure for your authentication system.
-
----
 
 # 🛡️ Express & Passport Auth System: The Blueprint
 
